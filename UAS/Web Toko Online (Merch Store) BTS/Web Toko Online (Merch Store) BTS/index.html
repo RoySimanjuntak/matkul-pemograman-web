@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BTS MERCH STORE - Index</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background: linear-gradient(to right, #ffccf9, #c2a2ff, #000000);
+    }
+    .navbar-brand,
+    .nav-link,
+    .dropdown-item {
+      color: white !important;
+      font-weight: 500;
+    }
+    .nav-link:hover,
+    .dropdown-item:hover,
+    .navbar-brand:hover {
+      color: #ffe6f2 !important;
+    }
+    .hero {
+      background: url('img/bts.jpeg') no-repeat center center;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    .hero .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .hero .content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+    .section {
+      padding: 60px 0;
+    }
+    #products { background-color: #f5e8ff; }
+    #cart { background-color: #e8f0ff; }
+    #checkout { background-color: #fffde8; }
+    #login { background-color: #f0f5ff; }
+    #admin { background-color: #f9e8f5; }
+    .card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark shadow">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">BTS MERCH STORE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+          <li class="nav-item"><a class="nav-link" href="keranjang.html">Keranjang</a></li>
+          <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero position-relative">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>Selamat Datang di BTS MERCH STORE</h1>
+      <p>Temukan koleksi merchandise resmi BTS favoritmu!</p>
+    </div>
+  </section>
+
+  <!-- Produk Section -->
+  <section class="section" id="products">
+    <div class="container">
+      <h2 class="text-center mb-5">Produk Terlaris</h2>
+      <div class="row" id="product-list"></div>
+    </div>
+  </section>
+
+  <!-- Keranjang Belanja -->
+  <section class="section bg-light" id="cart">
+    <div class="container">
+      <h2 class="text-center mb-5">Keranjang Belanja</h2>
+      <p>Silakan menuju halaman <a href="keranjang.html">keranjang</a> untuk melihat pesanan Anda.</p>
+    </div>
+  </section>
+
+  <!-- Checkout -->
+  <section class="section" id="checkout">
+    <div class="container">
+      <h2 class="text-center mb-5">Checkout</h2>
+      <p>Untuk melanjutkan pembayaran, silakan buka halaman <a href="checkout.html">checkout</a>.</p>
+    </div>
+  </section>
+
+  <!-- Login Admin/User -->
+  <section class="section bg-light" id="login">
+    <div class="container">
+      <h2 class="text-center mb-5">Login Admin/User</h2>
+      <form>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025, KELOMPOK 9 | SISTEM INFORMASI</p>
+    </div>
+  </footer>
+
+  <!-- Script Tambah ke Keranjang -->
+  <script>
+    const produk = [
+      { nama: "Album BTS - BE", harga: 180000, gambar: "img/album1.jpeg" },
+      { nama: "Hoodie BTS Logo", harga: 250000, gambar: "img/hoodie1.jpeg" },
+      { nama: "Army Bomb Ver.3", harga: 500000, gambar: "img/bomb1.jpeg" },
+      { nama: "Photocard Set BTS", harga: 70000, gambar: "img/photo1.jpeg" },
+      { nama: "Kaos BTS Logo", harga: 120000, gambar: "img/kaos1.jpeg" },
+      { nama: "Poster BTS Edisi Terbatas", harga: 90000, gambar: "img/poster1.jpeg" },
+    ];
+
+    const container = document.getElementById("product-list");
+    produk.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "col-md-4 mb-4";
+      card.innerHTML = `
+        <div class="card h-100">
+          <img src="${item.gambar}" class="card-img-top" alt="${item.nama}">
+          <div class="card-body text-center">
+            <h5 class="card-title">${item.nama}</h5>
+            <p class="card-text">Harga: Rp${item.harga.toLocaleString()}</p>
+            <button class="btn btn-primary w-100" onclick="tambahKeKeranjang('${item.nama}', '${item.gambar}', ${item.harga})">Tambah ke Keranjang</button>
+          </div>
+        </div>`;
+      container.appendChild(card);
+    });
+
+    function tambahKeKeranjang(nama, gambar, harga) {
+      let keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+      const item = keranjang.find(p => p.nama === nama);
+      if (item) {
+        item.jumlah += 1;
+      } else {
+        keranjang.push({ nama, gambar, harga, jumlah: 1 });
+      }
+      localStorage.setItem('keranjang', JSON.stringify(keranjang));
+      alert(nama + " telah ditambahkan ke keranjang.");
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

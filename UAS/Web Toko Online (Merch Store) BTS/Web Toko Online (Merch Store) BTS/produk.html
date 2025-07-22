@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produk BTS Merch</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff0f7;
+      color: #333;
+    }
+    .navbar {
+      background: linear-gradient(to right, #ffccf9, #c2a2ff, #000000);
+    }
+    .navbar-brand,
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+    }
+    .nav-link:hover,
+    .navbar-brand:hover {
+      color: #ffd6f9 !important;
+    }
+    h1 {
+      color: #9b2fae;
+      margin-top: 40px;
+    }
+    .nav-tabs .nav-link {
+      background-color: #f5d9ff;
+      color: #6a1b9a;
+      font-weight: 500;
+      border: none;
+    }
+    .nav-tabs .nav-link.active {
+      background-color: #d9afff;
+      color: white;
+    }
+    .card {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 30px 0;
+      text-align: center;
+    }
+    footer a {
+      color: #ddd;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #ffccff;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">BTS MERCH STORE</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-2">
+          <a class="nav-link active" aria-current="page" href="produk.html">Produk</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="keranjang.html">Keranjang</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="checkout.html">Checkout</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="admin.html">Admin</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- KONTEN UTAMA -->
+<div class="container">
+  <h1 class="text-center my-5">Daftar Produk BTS Merch</h1>
+
+  <!-- Tabs Menu Produk -->
+  <ul class="nav nav-tabs justify-content-center mb-4" id="productTabs" role="tablist">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#album">Album</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#hoodie">Hoodie</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#bomb">Army Bomb</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#photocard">Photocard</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tshirt">T-Shirt</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#poster">Poster</button></li>
+  </ul>
+
+  <!-- Isi Produk -->
+  <div class="tab-content" id="productTabsContent">
+    <div class="tab-pane fade show active" id="album"><div class="row" id="albumContent"></div></div>
+    <div class="tab-pane fade" id="hoodie"><div class="row" id="hoodieContent"></div></div>
+    <div class="tab-pane fade" id="bomb"><div class="row" id="bombContent"></div></div>
+    <div class="tab-pane fade" id="photocard"><div class="row" id="photocardContent"></div></div>
+    <div class="tab-pane fade" id="tshirt"><div class="row" id="tshirtContent"></div></div>
+    <div class="tab-pane fade" id="poster"><div class="row" id="posterContent"></div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="mt-5">
+  <p>&copy; 2025, KELOMPOK 9 | SISTEM INFORMASI</p>
+</footer>
+
+<!-- SCRIPT PRODUK -->
+<script>
+  const kategoriProduk = {
+    album: {
+      gambar: ["album1.jpeg", "album2.jpeg", "album3.jpeg", "album4.jpeg", "album5.jpeg", "album6.jpeg"],
+      nama: ["BE", "Map of the Soul: 7", "Love Yourself: Tear", "Wings", "Skool Luv Affair", "Dark & Wild"]
+    },
+    hoodie: {
+      gambar: ["hoodie1.jpeg", "hoodie2.jpeg", "hoodie3.jpeg", "hoodie4.jpeg", "hoodie5.jpeg", "hoodie6.jpeg"],
+      nama: ["Hoodie Love Yourself", "Hoodie DNA", "Hoodie Logo Hitam", "Hoodie Purple", "Hoodie ON", "Hoodie Butter"]
+    },
+    bomb: {
+      gambar: ["bomb1.jpeg", "bomb2.jpeg", "bomb3.jpeg", "bomb4.jpeg", "bomb5.jpeg", "bomb6.jpeg"],
+      nama: ["Army Bomb Ver.3", "Army Bomb Ver.4", "Mini Army Light", "Army Bomb Special", "LED Stick", "Limited Army Bomb"]
+    },
+    photocard: {
+      gambar: ["photo1.jpeg", "photo2.jpeg", "photo3.jpeg", "photo4.jpeg", "photo5.jpeg", "photo6.jpeg"],
+      nama: ["Set OT7", "Jungkook Edition", "Taehyung Premium", "Butter Ver", "Love Yourself", "Random Pack"]
+    },
+    tshirt: {
+      gambar: ["kaos1.jpeg", "kaos2.jpeg", "kaos3.jpeg", "kaos4.jpeg", "kaos5.jpeg", "kaos6.jpeg"],
+      nama: ["T-Shirt Logo BTS", "T-Shirt Purple Heart", "T-Shirt Love Yourself", "T-Shirt MIC Drop", "T-Shirt ON", "T-Shirt Butter"]
+    },
+    poster: {
+      gambar: ["poster1.jpeg", "poster2.jpeg", "poster3.jpeg", "poster4.jpeg", "poster5.jpeg", "poster6.jpeg"],
+      nama: ["Poster Group", "Poster Concept Map", "Poster Love Yourself", "Poster Butter", "Poster Wings", "Poster Proof"]
+    }
+  };
+
+  const renderProduk = (id, data) => {
+    const container = document.getElementById(id + "Content");
+    let html = '';
+    for (let i = 0; i < data.gambar.length; i++) {
+      const harga = (i+1)*100000;
+      html += `
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="img/${data.gambar[i]}" class="card-img-top" alt="${data.nama[i]}">
+            <div class="card-body text-center">
+              <h5 class="card-title">${data.nama[i]}</h5>
+              <p class="card-text">Harga: Rp${harga}</p>
+              <button class="btn btn-primary w-100 add-to-cart" data-nama="${data.nama[i]}" data-harga="${harga}" data-gambar="img/${data.gambar[i]}">Tambah ke Keranjang</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    container.innerHTML = html;
+  };
+
+  for (const kategori in kategoriProduk) {
+    renderProduk(kategori, kategoriProduk[kategori]);
+  }
+
+  // Delegasi event untuk tombol Tambah ke Keranjang
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList.contains('add-to-cart')) {
+      const button = e.target;
+      const nama = button.getAttribute('data-nama');
+      const harga = parseInt(button.getAttribute('data-harga'));
+      const gambar = button.getAttribute('data-gambar');
+
+      const produk = {
+        nama,
+        harga,
+        gambar,
+        jumlah: 1
+      };
+
+      let keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+      const existing = keranjang.find(p => p.nama === produk.nama);
+      if (existing) {
+        existing.jumlah += 1;
+      } else {
+        keranjang.push(produk);
+      }
+      localStorage.setItem('keranjang', JSON.stringify(keranjang));
+
+      alert(`${nama} ditambahkan ke keranjang!`);
+    }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

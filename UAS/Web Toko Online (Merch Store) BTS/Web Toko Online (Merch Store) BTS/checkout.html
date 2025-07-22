@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - BTS Merch Store</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff0f8;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background: linear-gradient(to right, #ffccf9, #c2a2ff, #000000);
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+    }
+    .nav-link:hover {
+      color: #ffe6f2 !important;
+    }
+    .container {
+      padding: 40px 0;
+    }
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 14px;
+    }
+    .btn-wa {
+      background-color: #25d366;
+      color: white;
+      font-weight: bold;
+    }
+    .btn-wa:hover {
+      background-color: #1ebd5c;
+    }
+    .list-group-item {
+      border: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">BTS MERCH STORE</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+        <li class="nav-item"><a class="nav-link" href="keranjang.html">Keranjang</a></li>
+        <li class="nav-item"><a class="nav-link active" href="checkout.html">Checkout</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Checkout Section -->
+<div class="container">
+  <h2 class="text-center mb-4">Checkout Pesanan</h2>
+
+  <div id="checkoutItems"></div>
+
+  <div class="mt-4 text-end">
+    <h5>Total Bayar: <strong id="totalBayar">Rp0</strong></h5>
+    <button class="btn btn-wa mt-3" onclick="kirimWhatsApp()">Kirim ke WhatsApp</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 KELOMPOK 9 | SISTEM INFORMASI</p>
+  </div>
+</footer>
+
+<script>
+  function tampilkanCheckout() {
+    const keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+    const container = document.getElementById("checkoutItems");
+    const totalBayar = document.getElementById("totalBayar");
+
+    if (keranjang.length === 0) {
+      container.innerHTML = "<p class='text-center text-danger'>Keranjang kosong.</p>";
+      totalBayar.textContent = "Rp0";
+      return;
+    }
+
+    let html = "<ul class='list-group'>";
+    let total = 0;
+
+    keranjang.forEach((item) => {
+      const subtotal = item.harga * item.jumlah;
+      total += subtotal;
+      html += `
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          ${item.nama} (x${item.jumlah})
+          <span>Rp${subtotal.toLocaleString()}</span>
+        </li>
+      `;
+    });
+
+    html += "</ul>";
+    container.innerHTML = html;
+    totalBayar.textContent = "Rp" + total.toLocaleString();
+  }
+
+  function kirimWhatsApp() {
+    const keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+    if (keranjang.length === 0) {
+      alert("Keranjang masih kosong!");
+      return;
+    }
+
+    let pesan = "*[PESANAN BTS MERCH STORE]*%0A";
+    let total = 0;
+
+    keranjang.forEach((item) => {
+      const subtotal = item.harga * item.jumlah;
+      total += subtotal;
+      pesan += `- ${item.nama} (x${item.jumlah}): Rp${subtotal.toLocaleString()}%0A`;
+    });
+
+    pesan += `%0A*Total: Rp${total.toLocaleString()}*%0A`;
+    pesan += `Halo, saya ingin memesan produk tersebut.`;
+
+    const noWA = "6287894313479";
+    const link = `https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`;
+    window.open(link, "_blank");
+  }
+
+  window.onload = tampilkanCheckout;
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
